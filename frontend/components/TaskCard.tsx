@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "sonner";
 import { Card, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { Checkbox } from "./ui/checkbox";
 import { Task } from "../lib/store";
@@ -18,10 +19,20 @@ export function TaskCard({ task, isCreating = false }: TaskCardProps) {
     // Prevent dialog from opening when checkbox is clicked
     e.stopPropagation();
 
-    updateTask.mutate({
-      id: task.id,
-      completed: !task.completed,
-    });
+    updateTask.mutate(
+      {
+        id: task.id,
+        completed: !task.completed,
+      },
+      {
+        onSuccess: () => {
+          toast.success(task.completed ? "Task marked as incomplete" : "Task completed");
+        },
+        onError: () => {
+          toast.error("Failed to update task status");
+        },
+      }
+    );
   };
 
   return (

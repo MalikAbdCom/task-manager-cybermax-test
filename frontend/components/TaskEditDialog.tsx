@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -78,6 +79,10 @@ export function TaskEditDialog({
       {
         onSuccess: () => {
           onOpenChange(false);
+          toast.success("Task updated successfully");
+        },
+        onError: () => {
+          toast.error("Failed to update task");
         },
       }
     );
@@ -87,6 +92,10 @@ export function TaskEditDialog({
     deleteTask.mutate(task.id, {
       onSuccess: () => {
         onOpenChange(false);
+        toast.success("Task deleted successfully");
+      },
+      onError: () => {
+        toast.error("Failed to delete task");
       },
     });
   };

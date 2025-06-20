@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from "sonner";
 import { 
   Dialog, 
   DialogContent, 
@@ -69,11 +70,15 @@ export function TaskForm() {
           title: '',
           description: ''
         });
+        // Display success toast
+        toast.success("Task created successfully");
       },
       onError: (error) => {
         console.error('Failed to create task:', error);
         // Reopen dialog with the same data
         setOpen(true);
+        // Display error toast
+        toast.error("Failed to create task. Please try again.");
       }
     });
   };
