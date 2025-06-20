@@ -57,7 +57,7 @@ export function TaskClient() {
           </p>
         </header>
 
-        <main className="bg-white shadow-sm rounded-lg p-6 dark:bg-gray-800">
+        <main className="bg-white shadow-sm rounded-2xl p-2 dark:bg-gray-800">
           <TaskList />
         </main>
       </div>

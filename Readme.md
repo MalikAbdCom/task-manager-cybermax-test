@@ -44,10 +44,25 @@ cd task-manager-cybermax-test
 # Install dependencies for both frontend and backend
 # Frontend
 cd frontend
+
+# create .env
+touch .env
+
+# add API_URL to .env
+NEXT_PUBLIC_API_URL=http://localhost:8000 # development
+NEXT_PUBLIC_API_URL=https://task-manager-cybermax-test.vercel.app # production
+
 npm install
 
 # Backend
 cd backend
+
+# create .env
+touch .env
+
+# add Database connection string to .env
+DATABASE_URL=yourdatabasekey # i am using postgresql
+
 pip install -r requirements.txt
 ```
 

@@ -28,7 +28,7 @@ export function TaskCard({ task, isCreating = false }: TaskCardProps) {
     <>
       <Card
         className={`w-full ${
-          task.completed ? "bg-gray-800" : ""
+          task.completed ? "bg-gray-800 dark:bg-gray-700" : ""
         } hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors cursor-pointer relative`}
         onClick={() => setDialogOpen(true)}
       >
@@ -37,14 +37,14 @@ export function TaskCard({ task, isCreating = false }: TaskCardProps) {
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
           </div>
         )}
-        <CardHeader className="flex flex-row items-start gap-3 space-y-0 py-3 px-4">
+        <CardHeader className="flex flex-row items-start gap-3 space-y-0">
           <div className="flex items-center">
             <Checkbox
               checked={task.completed}
               onCheckedChange={() => {}} // Empty handler as we're now handling click in the parent handler
               onClick={handleToggleComplete}
               id={`task-${task.id}`}
-              className="cursor-pointer"
+              className="cursor-pointer bg-gray-800 dark:bg-gray-400"
             />
           </div>
           <div className="flex-1">
